@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vk Client.Android", "Vk Client.Android\Vk Client.Android.csproj", "{49C3860E-0189-4A2E-9DE3-8F71C31B1641}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vk Client", "Vk Client\Vk Client.csproj", "{2A9E7996-33FA-4775-896E-C384DE6B58FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49C3860E-0189-4A2E-9DE3-8F71C31B1641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49C3860E-0189-4A2E-9DE3-8F71C31B1641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49C3860E-0189-4A2E-9DE3-8F71C31B1641}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{49C3860E-0189-4A2E-9DE3-8F71C31B1641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49C3860E-0189-4A2E-9DE3-8F71C31B1641}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49C3860E-0189-4A2E-9DE3-8F71C31B1641}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2A9E7996-33FA-4775-896E-C384DE6B58FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A9E7996-33FA-4775-896E-C384DE6B58FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A9E7996-33FA-4775-896E-C384DE6B58FA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2A9E7996-33FA-4775-896E-C384DE6B58FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A9E7996-33FA-4775-896E-C384DE6B58FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A9E7996-33FA-4775-896E-C384DE6B58FA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEB882AE-2171-470F-BE4D-84B47B3BA2E7}
+	EndGlobalSection
+EndGlobal
