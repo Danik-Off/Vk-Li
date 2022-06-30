@@ -21,9 +21,10 @@ namespace Vk_Client.ViewModels
        public OpenDialogView()
         {
             Items = new ObservableCollection<Models.Message>();
-           
-         
-            
+
+            var user = new DataCash().GetUserByCash(Convert.ToInt64(Peer_id));
+            Title = user.FirstName + " " +user.LastName;
+
         }
         public long Peer_id
         {

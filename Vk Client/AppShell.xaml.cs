@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using Vk_Client.Services;
 using Vk_Client.ViewModels;
 using Vk_Client.Views;
@@ -33,15 +35,31 @@ namespace Vk_Client
         }
         private void loadMainInfo()
         {
-           
-                new LoadToCash();
-           
-            if (App.Current.Properties.TryGetValue("main_user", out user))
+            try
             {
-                UserFullName_Label.Text  = GetParameter<User>(user).FirstName +" " + GetParameter<User>(user).LastName;
-                UserStatus_Label.Text = GetParameter<User>(user).Status;
+                string filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $"text.txt");
+     var its  =  JsonConvert.DeserializeObject<IDictionary<string ,object>>(  File.ReadAllText(filename));
+                foreach(var i in its)
+                {
+                    App.Current.Properties.Add(i);
+                }
                 
             }
+            catch
+            {
+
+            }
+            try
+            {
+                var user = new DataCash().GetUserByCash(0);
+                UserFullName_Label.Text = user.FirstName + " " + user.LastName;
+                UserStatus_Label.Text = user.Status;
+            }
+            catch
+            {
+
+            }
+            
         }
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {

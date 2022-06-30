@@ -11,6 +11,7 @@ using VkNet.Enums.Filters;
 using VkNet.Model;
 using VkNet.Model.RequestParams;
 using Xamarin.Forms;
+using System.IO;
 
 namespace Vk_Client.ViewModels
 {
@@ -33,6 +34,7 @@ namespace Vk_Client.ViewModels
         public LoginViewModel()
         {
             object token = "";
+            
             if (App.Current.Properties.TryGetValue("token", out token))
             {
                 var api = new VkApi();
@@ -58,7 +60,8 @@ namespace Vk_Client.ViewModels
             {
                 string danni = avtoreg.Get("https://oauth.vk.com/token?grant_type=password&client_id=2274003&client_secret=hHbZxrka2uZ6jB1inYsH&username=" + Login_edit + "&password=" + Password_edit).ToString(); //отправляем Get запрос 
                 dynamic dynObj = JsonConvert.DeserializeObject(danni);
-                token = dynObj.access_token;
+                token = dynObj.access_token;//"id_user_Auth"
+                App.Current.Properties["id_user_Auth"] = dynObj.user_id;
                 Debug.WriteLine(token);
             }
  
@@ -72,9 +75,12 @@ namespace Vk_Client.ViewModels
             {
                 AccessToken = token
             });
-            Debug.WriteLine(api.Messages.GetDialogs(new MessagesDialogsGetParams()).TotalCount);
+            Debug.WriteLine(token);
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            App.Current.Properties["token"] = api.Token;
+            App.Current.Properties["token"] = token;
+            var json= JsonConvert.SerializeObject(App.Current.Properties);
+            string filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $"text.txt");
+            File.WriteAllText(filename, json);
             await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
            
         }

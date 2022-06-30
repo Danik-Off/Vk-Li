@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using VkNet;
@@ -11,7 +13,7 @@ namespace Vk_Client.Services
     {
         private object token;
 
-        public void CashUser(long user_id)
+        public void CashUser(long user_id = 0)
         {
            
             if (App.Current.Properties.TryGetValue("token", out token))
@@ -26,8 +28,18 @@ namespace Vk_Client.Services
                     });
 
                     // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-                    App.Current.Properties["user_id"+user_id.ToString()] = api.Users.Get(new long[] { user_id}).FirstOrDefault();
-                  
+                    if (user_id != 0)
+                    {
+                        App.Current.Properties["user_id" + user_id.ToString()] = api.Users.Get(new long[] { user_id }).FirstOrDefault();
+                    }
+                    else
+                    {
+                        App.Current.Properties["user_id" + user_id.ToString()] = api.Users.Get(new long[] {  }).FirstOrDefault();
+                    }
+                    var json = JsonConvert.SerializeObject(App.Current.Properties);
+                    string filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $"text.txt");
+                    File.WriteAllText(filename, json);
+
                 }
                 catch
                 {

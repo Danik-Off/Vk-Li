@@ -38,7 +38,7 @@ namespace Vk_Client.Services
                 }
                 catch
                 {
-                    App.Current.Properties["token"] = "";
+                  // App.Current.Properties["token"] = "";
                    
                 }
                 }

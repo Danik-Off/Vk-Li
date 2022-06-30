@@ -39,16 +39,22 @@ namespace Vk_Client.ViewModels
         }
         public async void FirstLoad()
         {
-            await Task.Run(() =>ExecuteLoadItemsCommand());
+           await Task.Run(() =>ExecuteLoadItemsCommand());
 
 
         }
         public async Task ExecuteLoadItemsCommand()
         {
-            IsBusy = true;
-            Items.Clear();
+            
+            
             try
             {
+                if (IsBusy)
+                {
+                    throw new Exception();
+                }
+                IsBusy = true;
+                Items.Clear();
                 object token = "";
                 if (App.Current.Properties.TryGetValue("token", out token))// App.Current.Properties["id_user_Auth"]
                 {
