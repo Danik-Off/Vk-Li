@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Vk_Client.ViewModels" 
+             xmlns:model="clr-namespace:Vk_Client.Models" 
+             x:Class="Vk_Client.Views.OpenDialog">
+    <ContentPage.ToolbarItems>
+       
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <RefreshView x:DataType="local:OpenDialogView" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView x:Name="ItemsView"
+                ItemsSource="{Binding Items}"
+                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame OutlineColor="Black" Margin="5">
+                                <StackLayout Padding="0" x:DataType="model:Message" >
+
+                                    <Label TextColor="Black" Text="{Binding Title}" 
+                            LineBreakMode="NoWrap"  
+                            FontSize="16" />
+                                    <Label TextColor="Black" Text="{Binding Text}" 
+                            LineBreakMode="NoWrap"  
+                            FontSize="14" />
+                                    
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

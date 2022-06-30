@@ -72,7 +72,13 @@
             </Style>
         </ResourceDictionary>
     </Shell.Resources>
-
+    <Shell.FlyoutHeader>
+        <StackLayout BackgroundColor="White" Padding="10">
+            <Image HeightRequest="100" Source="xamarin.png" />
+            <Label x:Name="UserFullName_Label" TextColor="Black" Text="Header" />
+            <Label x:Name="UserStatus_Label"  TextColor="Black" Text="Привет Хабр!"/>
+        </StackLayout>
+    </Shell.FlyoutHeader>
     <!-- 
         When the Flyout is visible this defines the content to display in the flyout.
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
@@ -81,20 +87,21 @@
     <TabBar>
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </TabBar>
-    <FlyoutItem Title="Пользователь" Icon="icon_about.png">
-        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-    </FlyoutItem>
     <FlyoutItem Title="Диалоги" Icon="icon_feed.png">
         <ShellContent Route="DialogsPage" ContentTemplate="{DataTemplate local:DialogsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="хз что это" Icon="icon_feed.png">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
+    <FlyoutItem Title="О приложении" Icon="icon_feed.png">
+        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>
-   
 
-    <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
+
+
+        <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
+    
+    
     <MenuItem Text="Выйти" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
     </MenuItem>
+  
 
     <!--
         TabBar lets you define content that won't show up in a flyout menu. When this content is active
