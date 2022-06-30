@@ -13,13 +13,14 @@ namespace Vk_Client.Services
 {
     class LoadToCash
     {
-        private object token;
         public LoadToCash()
         {
             InfoUser();
         }
         void InfoUser()
         {
+
+           object token;
             if (App.Current.Properties.TryGetValue("token", out token))
             {
                 try
@@ -33,14 +34,15 @@ namespace Vk_Client.Services
 
                     // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
                     App.Current.Properties["main_user"] = api.Users.Get(new long[] { }).FirstOrDefault();
-                    Shell.Current.GoToAsync($"//{nameof(DialogsPage)}");
+                 
                 }
                 catch
                 {
                     App.Current.Properties["token"] = "";
-                    Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+                   
                 }
                 }
+            else {  }
         }
     }
 }

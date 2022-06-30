@@ -33,11 +33,9 @@ namespace Vk_Client
         }
         private void loadMainInfo()
         {
-            try
-            {
+           
                 new LoadToCash();
-            }
-            catch { }
+           
             if (App.Current.Properties.TryGetValue("main_user", out user))
             {
                 UserFullName_Label.Text  = GetParameter<User>(user).FirstName +" " + GetParameter<User>(user).LastName;
